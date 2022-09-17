@@ -7,7 +7,6 @@ const app = express();
 const notFoundMiddleware = require('./middleware/not_found')
 const errorHandlerMiddleware = require('./middleware/error_handler')
 
-const connectDB = require('./db/connect')
 const mainRouter = require('./routes/main')
 
 //middleware
@@ -23,7 +22,6 @@ const port = process.env.port || 3000
 
 const start = async () => {
     try {
-        connectDB(process.env.MONGO_URI)
         app.listen(
             port,
             console.log(`Listening 👂👂👂 on http://localhost:${port}`)

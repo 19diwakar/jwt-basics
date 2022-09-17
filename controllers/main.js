@@ -1,4 +1,3 @@
-require('dotenv').config()
 const jwt = require('jsonwebtoken')
 const { BadRequest } = require('../errors')
 
@@ -20,10 +19,10 @@ const login = async (req, res) => {
 }
 
 const dashboard = async (req, res) => {
-    const user = req.user
     const luckeyNumber = Math.floor(Math.random() * 100)
+
     res.status(200).json({
-        msg: `Hello ${user.email}`,
+        msg: `Hello ${req.user.email}`,
         secret: `Here is your authorized data. Your lucky number is ${luckeyNumber}`
     })
 }
